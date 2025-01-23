@@ -1,4 +1,4 @@
-this code is a updated version of https://github.com/chateight/hub75_led_array_drive
+this code is an updated version of https://github.com/chateight/hub75_led_array_drive
 
 the additional function is to accept binary r/g/b file from the server and to prepare it for display immediately
 
