@@ -1,3 +1,7 @@
+updated(2025/2/9)
+
+to add Wi-Fi environmet select function to TCP connection
+
 updated(2025/1/25)
 
 to enable text to image generation
