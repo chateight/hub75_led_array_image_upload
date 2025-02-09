@@ -20,8 +20,11 @@ WiFiClient client;
 WiFiServer server(5000);
 const int MAX_BUFFER = 7000;
 static uint8_t receivedData[MAX_BUFFER]; 
+IPAddress staticIP;
+IPAddress gateway;
+IPAddress subnet(255, 255, 255, 0);
 
-// for UDP connection
+// for UDP connection(home 1, sapo_center 11)
 IPAddress myIP(192, 168, 1, 201);
 WiFiUDP Udp;
 char packetBuffer[8];
@@ -58,6 +61,8 @@ bool init_disp = true;
 #define c (18)
 #define d (20)
 #define e (22)
+
+#define nw (15)
 
 // row select matrix
 
