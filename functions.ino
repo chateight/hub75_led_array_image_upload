@@ -23,14 +23,14 @@ void refresh(){
 // due to the processing time, we prepare two similar code
 // (if we set disp_data plate dimension as a variable, it will causes thirty percent processing time increasing)
   if (plane == 0){ 
-    for (byte j = 0; j < 15; j++){
+    for (byte j = 0; j < 16; j++){
       row_set_0(j);
       gpio_put(oe, HIGH);
       clock_func(lat);
       gpio_put(oe, LOW);
     }
   } else {
-    for (byte j = 0; j < 15; j++){
+    for (byte j = 0; j < 16; j++){
       row_set_1(j);
       gpio_put(oe, HIGH);
       clock_func(lat);
@@ -138,9 +138,19 @@ void row_set_1(byte shade){
 void tcp_setup(){
   Serial.begin(115200);
   
-  IPAddress staticIP(192, 168, 1, 200); 
-  IPAddress gateway(192, 168, 1, 1);
-  IPAddress subnet(255, 255, 255, 0);
+  pinMode(nw, INPUT_PULLUP);
+
+// Wi-Fi address switch
+// 0 : home
+// 1 : support center
+  int sw_stat = digitalRead(nw);
+  if (sw_stat == 0){
+    staticIP = IPAddress(192, 168, 1, 200);
+    gateway = IPAddress(192, 168, 1, 1);
+  }else{
+    staticIP = IPAddress(192, 168, 11, 200);
+    gateway = IPAddress(192, 168, 11, 1);
+  }
 
   WiFi.config(staticIP, gateway, subnet);
 
